@@ -34,7 +34,7 @@ export interface UserInputMention { type: 'Mention';     name: string;     path:
 export interface protocol_Structs {
   reason: RefreshTokenFailedReason;
   message: string;
-  'Expired' | 'Exhausted' | 'Revoked' | 'Other';
+
   id: string;
   location: CapabilityRootLocation;
   name: string;
@@ -109,7 +109,7 @@ export interface protocol_Structs {
   host?: string | null;
   reason?: string | null;
   port?: number | null;
-  'Text' | 'Image' | 'Audio';
+
   effort: ReasoningEffort;
   description: string;
   id: string;
@@ -139,10 +139,10 @@ export interface protocol_Structs {
   availability_nux?: ModelAvailabilityNux | null;
   supported_in_api: boolean;
   input_modalities: InputModality[];
-  'List' | 'Hide' | 'None';
+
   'Freeform';
-  'Bytes' | 'Tokens';
-  'Direct' | 'CodeMode' | 'CodeModeOnly';
+
+
   mode: TruncationMode;
   limit: number;
   slug: string;
@@ -256,7 +256,7 @@ export interface protocol_Structs {
   kind: FileSystemSandboxKind;
   globScanMaxDepth?: number | null;
   entries: FileSystemSandboxEntry[];
-  'Effective' | 'PreserveMutableComponents';
+
   kind: FileSystemSandboxKind;
   glob_scan_max_depth?: number | null;
   entries: RawFileSystemSandboxEntry[];
@@ -269,8 +269,8 @@ export interface protocol_Structs {
   writable_roots: WritableRoot[];
   unreadable_roots: AbsolutePathBuf[];
   unreadable_globs: string[];
-  'FailClosed' | 'ReturnError';
-  'Pending' | 'InProgress' | 'Completed';
+
+
   step: string;
   status: StepStatus;
   explanation?: string | null;

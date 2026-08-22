@@ -41,7 +41,7 @@ export interface execserverprotocol_Structs {
   method?: string | null;
   client?: string | null;
   policyOverride: boolean;
-  'Http' | 'HttpsConnect' | 'Socks5Tcp' | 'Socks5Udp';
+
   decision: ExecServerNetworkPolicyDecision;
   id: RequestId;
   method: string;
