@@ -25,7 +25,7 @@ export interface RuntimeResponseTerminated { None: 'Terminated';     cell_id: Ce
 export interface RuntimeResponseResult { None: 'Result';     cell_id: CellId;     content_items: FunctionCallOutputContentItem[];     error_text: string | null; }
 
 export interface codemodeprotocol_Structs {
-  'Function' | 'Freeform';
+
   name: string;
   toolName: ToolName;
   description: string;
@@ -39,7 +39,7 @@ export interface codemodeprotocol_Structs {
   code: string;
   yield_time_ms?: number | null;
   max_output_tokens?: number | null;
-  'Visible' | 'Hidden';
+
   tool_name: ToolName;
   global_name: string;
   description: string;
@@ -54,12 +54,12 @@ export interface codemodeprotocol_Structs {
   selectedVersion: ProtocolVersion;
   capabilities: CapabilitySet;
   bulkConnectionToken?: string | null;
-  'Control' | 'Bulk';
+
   maxYieldTimeMs?: number | null;
   maxHeapSizeBytes?: number | null;
   name: string;
   namespace?: string | null;
-  'Function' | 'Freeform';
+
   name: string;
   tool_name: WireToolName;
   description: string;
@@ -73,14 +73,14 @@ export interface codemodeprotocol_Structs {
   max_output_tokens?: number | null;
   cell_id: WireCellId;
   yield_time_ms: number;
-  'Auto' | 'Low' | 'High' | 'Original';
+
   cell_id: WireCellId;
   runtime_tool_call_id: string;
   tool_name: WireToolName;
   tool_kind: WireToolKind;
   input?: unknown | null;
   capability: Capability;
-  'Auto' | 'Low' | 'High' | 'Original';
+
   tool_call_id: string;
   enabled_tools: ToolDefinition[];
   source: string;
