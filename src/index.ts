@@ -1,5 +1,5 @@
-// AUTO-GENERATED BARREL — vendored from openai/codex app-server-protocol ts-rs output
-// upstream Apache-2.0 — see NOTICE.md
+﻿// AUTO-GENERATED BARREL
+// upstream Apache-2.0 - see NOTICE.md
 export * from './generated/app-server-protocol/AbsolutePathBuf';
 export * from './generated/app-server-protocol/AgentMessageInputContent';
 export * from './generated/app-server-protocol/AgentPath';
@@ -39,7 +39,6 @@ export * from './generated/app-server-protocol/GitSha';
 export * from './generated/app-server-protocol/ImageDetail';
 export * from './generated/app-server-protocol/ImageGenerationFailure';
 export * from './generated/app-server-protocol/ImageGenerationItem';
-export * from './generated/app-server-protocol/index';
 export * from './generated/app-server-protocol/InitializeCapabilities';
 export * from './generated/app-server-protocol/InitializeParams';
 export * from './generated/app-server-protocol/InitializeResponse';
@@ -307,7 +306,6 @@ export * from './generated/app-server-protocol/v2/HookSource';
 export * from './generated/app-server-protocol/v2/HookStartedNotification';
 export * from './generated/app-server-protocol/v2/HookTrustStatus';
 export * from './generated/app-server-protocol/v2/InAppBrowserRequirements';
-export * from './generated/app-server-protocol/v2/index';
 export * from './generated/app-server-protocol/v2/InstalledApp';
 export * from './generated/app-server-protocol/v2/ItemCompletedNotification';
 export * from './generated/app-server-protocol/v2/ItemGuardianApprovalReviewCompletedNotification';
@@ -678,4 +676,3 @@ export * from './generated/app-server-protocol/WebSearchItem';
 export * from './generated/app-server-protocol/WebSearchLocation';
 export * from './generated/app-server-protocol/WebSearchMode';
 export * from './generated/app-server-protocol/WebSearchToolConfig';
-export * from './handwritten/index.js';
