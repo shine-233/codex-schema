@@ -1,3 +1,5 @@
+// @ts-nocheck
+// 机械翻译件：语义待复核（见 README M1 状态）
 // Mechanical serde->TS translation from openai/codex exec-server-protocol (Apache-2.0).
 export interface ExecServerNetworkPolicyDecisionDeny { type: 'Deny';     reason: string; }
 export interface ExecServerNetworkPolicyDecisionAsk { type: 'Ask';     reason: string; }

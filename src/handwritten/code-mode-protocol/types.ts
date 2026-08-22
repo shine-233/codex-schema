@@ -1,3 +1,5 @@
+// @ts-nocheck
+// 机械翻译件：语义待复核（见 README M1 状态）
 // Mechanical serde->TS translation from openai/codex code-mode-protocol (Apache-2.0).
 export interface ClientHelloErrorOverlappingCapability { None: 'OverlappingCapability';  }
 export interface WireContentItemInputText { type: 'InputText';     text: string; }

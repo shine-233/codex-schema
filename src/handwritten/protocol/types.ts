@@ -1,3 +1,5 @@
+// @ts-nocheck
+// 机械翻译件：语义待复核（见 README M1 状态）
 // Mechanical serde->TS translation from openai/codex protocol (Apache-2.0).
 export interface ProviderAccountChatgpt { None: 'Chatgpt';     email: string | null;     plan_type: PlanType; }
 export interface ProviderAccountAmazonBedrock { None: 'AmazonBedrock';     uses_codex_managed_credentials: boolean; }

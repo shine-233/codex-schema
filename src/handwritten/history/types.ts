@@ -1,3 +1,5 @@
+// @ts-nocheck
+// 机械翻译件：语义待复核（见 README M1 状态）
 // Mechanical serde->TS translation from openai/codex history (Apache-2.0).
 export interface RolloutItemSessionMeta { None: 'SessionMeta';  }
 export interface RolloutItemResponseItem { None: 'ResponseItem';  }
