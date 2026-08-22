@@ -11,10 +11,13 @@ export interface RolloutItemEventMsg { None: 'EventMsg';  }
 export interface InitialHistoryResumed { None: 'Resumed';  }
 export interface InitialHistoryForked { None: 'Forked';  }
 export interface WindowIdWireLegacyWindowNumber { None: 'LegacyWindowNumber';  }
+export interface LegacyRolloutItemResponseItem { type: 'ResponseItem';  }
+export interface LegacyRolloutItemCompacted { type: 'Compacted';  }
 
 export interface history_Structs {
   item: ResponseItem;
   metadata?: CodexHarnessMetadata | null;
+  client_authored: boolean;
   message: string;
   replacement_history?: ResponseItemEnvelope[] | null;
   mcp_resource_origins?: McpResourceOriginCheckpoint | null;
@@ -23,7 +26,10 @@ export interface history_Structs {
   previous_window_id?: string | null;
   window_id?: string | null;
   timestamp: string;
+  ordinal?: number | null;
+  item: RolloutItem;
   conversation_id: ThreadId;
   history: RolloutItem[];
   rollout_path?: PathBuf | null;
+  replacementHistory: ResponseItem[];
 }
