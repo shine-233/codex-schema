@@ -27,3 +27,10 @@ AppServerMethod = { thread/start, ... }
 
 ## 上游同步
 基于 openai/codex@970b7f2ff4f6（Apache-2.0）。季度 diff 由 dsh-codex-ledger CI 触发，见 ledger/coverage.yaml 对应行。
+
+
+## M1 状态（2026-08-22）
+- ✅ **已 vendored**：app-server-protocol 的 ts-rs 官方生成物 **678 个 TS 类型文件**（`src/generated/app-server-protocol/`，Apache-2.0，锚点见 NOTICE.md）
+- ✅ 参考实现：官方 TypeScript SDK 源码（`reference/sdk-typescript/`）
+- ⏳ TODO：protocol / exec-server-protocol / code-mode-protocol / history 四个 crate 尚无上游生成物，需手翻或本地跑 ts-rs
+- 质量门：CI 执行 `tsc --noEmit`（全量类型检查）+ 冒烟测试
