@@ -1,44 +1,51 @@
 # codex-schema
 
-> openai/codex 全部线协议的 TypeScript 类型 + zod 校验器——其余所有仓库的类型地基。
+> Wire-protocol contracts ported from openai/codex: TypeScript types + zod-ready shapes.
+> openai/codex 线协议的类型契约库：678 个生成类型 + 手写协议面，让 dsh 侧代码与 codex 协议对得上。
 
-## 吸收来源
-- protocol (23,577 行)
-- app-server-protocol (30,267)
-- exec-server-protocol (1,818)
-- code-mode-protocol (4,147)
-- history (1,129)
-- ext/extension-api (2,346)
-- 参考: sdk/typescript 官方 TS 生成物
+[![ci](https://github.com/shine-233/codex-schema/actions/workflows/ci.yml/badge.svg)](../../actions)
+[![license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
 
-## 功能边界
-**做**：全部线协议 TS 类型；会话 JSONL 格式规格；SSE 流式事件全集（含 RateLimits/ETag 保真，判⑨）。
+## 这是什么
 
-**不做**：不含任何运行时行为，纯类型与校验。
+把 codex 的协议面翻译成 TypeScript 类型，供 dsh 侧（或任何 TS 项目）编译期对齐：
 
-## API 草图
+| 协议面 | 来源 | 形态 |
+|---|---|---|
+| `app-server-protocol/v2` | 上游 schema 生成 | **678 个类型**（Thread / Turn / McpServer / Plugin / Skills / Hooks…） |
+| `protocol` / `exec-server-protocol` / `code-mode-protocol` / `history` | 手写移植 | 核心消息与事件形状 |
+
+质量门：`tsc --noEmit` 全绿（CI 同款）。
+
+## 为什么
+
+dsh 与 codex 对接时最贵的错误是"字段名对上了、语义没对上"。与其在运行时猜，不如把上游类型搬过来，**编译期就锁死协议**。
+
+## 快速开始
+
+```ts
+import type { Thread, TurnStatus } from 'codex-schema'          // v2 app-server 面
+import * as protocol from 'codex-schema/…handwritten/protocol'  // 手写核心面
+
+function renderThread(t: Thread) { /* t.status: ThreadStatus 已锁死 */ }
 ```
-parseRolloutLine(json): Event
-AppServerMethod = { thread/start, ... }
-```
 
-## 验收标准
-解析 100 个真实 codex 会话文件零报错。
+> 这是纯类型包（types-only），没有运行时代码——装它就是为了 `tsc`。
 
-## 上游同步
-基于 openai/codex@970b7f2ff4f6（Apache-2.0）。季度 diff 由 dsh-codex-ledger CI 触发，见 ledger/coverage.yaml 对应行。
+### 作为 dsh 插件
 
+同样提供标准插件入口（name/inject/apply），注册一个 `codex_schema_info` 工具报告锚点版本与协议覆盖面，方便在宿主内确认当前对齐的上游版本。
 
-## M1 状态（2026-08-22）
-- ✅ **已 vendored**：app-server-protocol 的 ts-rs 官方生成物 **678 个 TS 类型文件**（`src/generated/app-server-protocol/`，Apache-2.0，锚点见 NOTICE.md）
-- ✅ 参考实现：官方 TypeScript SDK 源码（`reference/sdk-typescript/`）
-- ⏳ TODO：protocol / exec-server-protocol / code-mode-protocol / history 四个 crate 尚无上游生成物，需手翻或本地跑 ts-rs
-- 质量门：CI 执行 `tsc --noEmit`（全量类型检查）+ 冒烟测试
+## 在 dsh 里提供的工具
 
-## M1 补完状态（机械翻译）
-- history: 结构体字段 13，枚举成员 12 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
-- exec-server-protocol: 结构体字段 0，枚举成员 0 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
-- code-mode-protocol: 结构体字段 0，枚举成员 0 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
-- protocol: 结构体字段 0，枚举成员 0 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
+| 工具名 | 参数 | 作用 |
+|---|---|---|
+| `codex_schema_info` | — | 报告协议锚点、许可与覆盖面 |
 
-⚠️ 这些是**机械翻译**：类型形状可信度约 90%，语义校验靠 CI 的 tsc 与后续真实会话回放。上游若发布官方生成物应立即替换。
+## 来源与许可
+
+类型生成自 [openai/codex](https://github.com/openai/codex)@`970b7f2ff4f6` 的协议定义，Apache-2.0。详见 [NOTICE.md](./NOTICE.md)。
+
+---
+
+本仓库是 **codex→dsh 移植套件**的契约模块；总览见 [dsh-codex-pack](https://github.com/shine-233/dsh-codex-pack)。

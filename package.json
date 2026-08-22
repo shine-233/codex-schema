@@ -1,10 +1,10 @@
 {
-  "name": "@shine233/codex-schema",
+  "name": "codex-schema",
   "version": "0.1.0",
   "description": "Wire protocol contracts absorbed from openai/codex (Apache-2.0). M1 of the codex->dsh port.",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "types": "src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
@@ -12,8 +12,16 @@
     "build": "tsc --noEmit"
   },
   "devDependencies": {
-    "typescript": "^5.6.0",
     "vitest": "^2.1.9",
     "zod": "^3.24.0"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   }
 }
