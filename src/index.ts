@@ -678,3 +678,4 @@ export * from './generated/app-server-protocol/WebSearchItem';
 export * from './generated/app-server-protocol/WebSearchLocation';
 export * from './generated/app-server-protocol/WebSearchMode';
 export * from './generated/app-server-protocol/WebSearchToolConfig';
+export * from './handwritten/index.js';

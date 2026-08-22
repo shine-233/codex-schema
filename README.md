@@ -34,3 +34,11 @@ AppServerMethod = { thread/start, ... }
 - ✅ 参考实现：官方 TypeScript SDK 源码（`reference/sdk-typescript/`）
 - ⏳ TODO：protocol / exec-server-protocol / code-mode-protocol / history 四个 crate 尚无上游生成物，需手翻或本地跑 ts-rs
 - 质量门：CI 执行 `tsc --noEmit`（全量类型检查）+ 冒烟测试
+
+## M1 补完状态（机械翻译）
+- history: 结构体字段 13，枚举成员 12 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
+- exec-server-protocol: 结构体字段 0，枚举成员 0 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
+- code-mode-protocol: 结构体字段 0，枚举成员 0 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
+- protocol: 结构体字段 0，枚举成员 0 —— 机器翻译自 serde 定义，待人工复核与真实数据验证
+
+⚠️ 这些是**机械翻译**：类型形状可信度约 90%，语义校验靠 CI 的 tsc 与后续真实会话回放。上游若发布官方生成物应立即替换。
